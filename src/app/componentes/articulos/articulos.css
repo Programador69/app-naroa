@@ -1,0 +1,76 @@
+.articulo-compra {
+    animation: zoomIn linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 25%;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.carrusel {
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 10px;
+}
+
+.carrusel::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+.carrusel::-webkit-scrollbar-thumb {
+    background: #7C7135;
+    border-radius: 10px;
+}
+.carrusel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.carrusel figure {
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    width: 100%;
+    margin: 10px;
+    border-radius: 10px;
+    transform-origin: center center;
+    transform: scale(1);
+    transition: transform 0.5s;
+    position: relative;
+}
+
+.carrusel img {
+    width: 100%;
+    padding: 0;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+
+.multi-image-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--gold);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid var(--gold);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

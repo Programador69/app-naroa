@@ -1,5 +1,5 @@
 "use client";
-import { Nav, Filtros, Articulos, Pie, Cargando } from "./componentes";
+import { Nav, Filtros, Articulos, Pie, Cargando } from "../componentes";
 import { useState, useEffect } from "react";
 import type { Articulos as ArticuloType } from "@/app/types/types";
 import { obtenerArticulos } from "@/app/hooks";
@@ -64,7 +64,7 @@ export default function Home() {
         <section className="productos-grid">
           {
             cargando ? <Cargando /> :
-            <Articulos busqueda={busqueda} articulos={articulos} admin={false} />
+            <Articulos busqueda={busqueda} articulos={articulos} admin={true} />
           }
         </section>
 

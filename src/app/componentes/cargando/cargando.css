@@ -1,0 +1,64 @@
+.loading-pulse {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .loading-text {
+            text-align: center;
+        }
+
+        .pulse-circle {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: elegantPulse 2s ease-in-out infinite;
+            position: relative;
+        }
+
+        .pulse-circle::before,
+        .pulse-circle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            animation: ripple 2s ease-out infinite;
+        }
+
+        .pulse-circle::before {
+            width: 120px;
+            height: 120px;
+        }
+
+        .pulse-circle::after {
+            width: 140px;
+            height: 140px;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes elegantPulse {
+            0%, 100% {
+                transform: scale(0.8);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes ripple {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+        }
