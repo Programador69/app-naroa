@@ -20,7 +20,7 @@ export default function Home() {
       imagen: Array.isArray(row.imagen) ? row.imagen : [],
       precio: Number(row.precio),
       talla: String(row.talla),
-      linkCompra: String(row.linkCompra),
+      link_compra: String(row.link_compra),
       coleccion: String(row.coleccion),
     }));
   }

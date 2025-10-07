@@ -52,7 +52,7 @@ export function Articulos ({busqueda, articulos, admin}: {busqueda: string, arti
                                 <div className="producto-info">
                                     <h4>{articulo.nombre}</h4>
                                     <span className="producto-precio">{articulo.precio}</span>
-                                    <a href={articulo.linkCompra} target="_BLANK" className="producto-link">Link de compra</a>
+                                    <a href={articulo.link_compra} target="_BLANK" className="producto-link">Link de compra</a>
                                 </div>
                                 {
                                     admin ? <button className="botonEliminar" onClick={() => eliminarArticulo(articulo.id)}>Eliminar articulo</button> : null
