@@ -1,5 +1,5 @@
 "use server";
-import { createPool } from "@vercel/postgres"
+import { createPool} from "@vercel/postgres"
 
 type Arg = {
     producto: string;
@@ -17,7 +17,8 @@ export const registrarProducto = async (productoData: Arg) => {
             connectionString: process.env.DATABASE_URL
         })
     
-        const res = await pool.sql`INSERT INTO productos (nombre, genero, imagen, precio, talla, link_compra, coleccion) VALUES (${productoData.producto}, ${productoData.genero}, ${JSON.stringify(productoData.imagen)}, ${productoData.precio}, ${productoData.talla}, ${productoData.link}, ${productoData.coleccion})`;
+        const imagenArrayComoJSON = JSON.stringify(productoData.imagen);
+        const res = await pool.sql`INSERT INTO productos (nombre, genero, imagen, precio, talla, link_compra, coleccion) VALUES (${productoData.producto}, ${productoData.genero}, (${imagenArrayComoJSON})::JSONB::TEXT[], ${productoData.precio}, ${productoData.talla}, ${productoData.link}, ${productoData.coleccion})`;
         await pool.end();
 
         if (res) return true;
