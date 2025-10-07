@@ -9,7 +9,7 @@ export const login = async ({usuario, contrasena}:{usuario: string, contrasena: 
             connectionString: process.env.DATABASE_URL
         })
         
-        const resBd = await pool.sql`SELECT contra from usuarios where usuario = ${usuario}`;
+        const resBd = await pool.sql`SELECT contra, tipousuario from usuarios where usuario = ${usuario}`;
         const {rows} = resBd;
         await pool.end();
     
@@ -18,7 +18,8 @@ export const login = async ({usuario, contrasena}:{usuario: string, contrasena: 
         const match = await bcrypt.compare(contrasena, contraBd);
     
         if (match) {
-            await createSession(usuario);
+            const usuarioCompleto = `${usuario} ${rows[0].tipousuario}`;
+            await createSession(usuarioCompleto);
             return true;
         }
         else return false;

@@ -7,7 +7,7 @@ export type Articulos = {
     imagen: string[];
     precio: number;
     talla: string;
-    linkCompra: string;
+    link_compra: string;
     coleccion: string;
 }
 

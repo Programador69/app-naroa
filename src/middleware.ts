@@ -10,7 +10,12 @@ export async function middleware(req: NextRequest) {
 
     const esValida = await decrypt(sesion); 
 
-    if (esValida) return NextResponse.next()
+    if (esValida){
+        const user = (esValida as { user: string }).user;
+        if (req.url == "/productosAdmin" && user.split(" ")[1] !== "administrador") return NextResponse.redirect(new URL("/", req.url));
+
+        return NextResponse.next();
+    }
     else return NextResponse.redirect(new URL("/login", req.url));
 }
 

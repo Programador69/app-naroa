@@ -17,7 +17,7 @@ export const registrarProducto = async (productoData: Arg) => {
             connectionString: process.env.DATABASE_URL
         })
     
-        const res = await pool.sql`INSERT INTO productos (nombre, genero, imagen, precio, talla, linkCompra, coleccion) VALUES (${productoData.producto}, ${productoData.genero}, ${JSON.stringify(productoData.imagen)}, ${productoData.precio}, ${productoData.talla}, ${productoData.link}, ${productoData.coleccion})`;
+        const res = await pool.sql`INSERT INTO productos (nombre, genero, imagen, precio, talla, link_compra, coleccion) VALUES (${productoData.producto}, ${productoData.genero}, ${JSON.stringify(productoData.imagen)}, ${productoData.precio}, ${productoData.talla}, ${productoData.link}, ${productoData.coleccion})`;
         await pool.end();
 
         if (res) return true;
